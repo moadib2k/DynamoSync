@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{397136c1-4d81-408a-9e21-46a2a5ab031b}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>app.py</StartupFile>
+    <StartupFile>test.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -27,6 +27,7 @@
     <Compile Include="dynamo_sync\dynamo_sync_stack.py" />
     <Compile Include="dynamo_sync\__init__.py" />
     <Compile Include="src\stream_lambda\submit_firehose.py" />
+    <Compile Include="test.py" />
     <Compile Include="tests\unit\test_dyanmo_sink_stack.py" />
     <Compile Include="tests\unit\__init__.py" />
     <Compile Include="tests\__init__.py" />
