@@ -7,8 +7,6 @@ from dynamo_sync.dynamo_sync_stack import DynamoSyncStack
 
 
 app = cdk.App()
-DynamoSyncStack(app, "dynamo-sync", env=cdk.Environment(
-                account="444372120632",
-                region="us-west-1"))
+DynamoSyncStack(app, "dynamo-sync")
 
 app.synth()
