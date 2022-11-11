@@ -3,21 +3,13 @@ import json
 
 kinesisClient = boto3.client('kinesis')
 
-def getUpsertRecord(ddbRecord):
-    print('Upsert ' + json.dumps(ddbRecord))
-    
-    # Parse the NewImage json element
-    newImage = ddbRecord['NewImage']
+def getFireHoseRecord(sourceImage, eventType):
 
-    # construct firehose record from NewImage
     firehoseRecord = {}
-    firehoseRecord['Id'] = newImage['Id']['S']
-    
+    for k in sourceImage.keys():
+        firehoseRecord[k] = sourceImage[k]['S']
+    firehoseRecord['dynamo_event'] = eventType
     return firehoseRecord
-   
-def getDeleteRecord(ddbRecord):
-    print('Delete '+  json.dumps(ddbRecord))
-    return
 
 def writeToStream(record):
     data = json.dumps(record)
@@ -27,17 +19,23 @@ def writeToStream(record):
         PartitionKey=record['Id'])
 
 def lambda_handler(event, context):
-    print("Received event: " + json.dumps(event, indent=2))
+    print("Received event: " + json.dumps(event))
     for record in event['Records']:
-        print("DynamoDB Record: " + json.dumps(record['dynamodb'], indent=2))
+
+        # get the root record
+        ddbrecord = record['dynamodb']
+        print("DynamoDB Record: " + json.dumps(ddbrecord))
+
         if record['eventName'] == 'INSERT':
-            fRecord = getUpsertRecord(record['dynamodb'])
+            fRecord = getFireHoseRecord(ddbrecord ['NewImage'], 'INSERT')
+
         elif record['eventName'] == 'MODIFY':
-            fRecord = getUpsertRecord(record['dynamodb'])
+            fRecord = getFireHoseRecord(ddbrecord ['NewImage'], 'MODIFY')
+
         elif record['eventName'] == 'REMOVE':
-            fRecord = getDeleteRecord(record['dynamodb'])
+            fRecord = getFireHoseRecord(ddbrecord ['OldImage'], 'REMOVE')
 
         writeToStream(fRecord)
-
         
     return 'Successfully processed {} records.'.format(len(event['Records']))
+

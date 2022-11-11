@@ -1,0 +1,39 @@
+{
+    "Records": [
+        {
+            "eventID": "2e5bfcb5f59b6a980cf7707554abdc7d",
+            "eventName": "MODIFY",
+            "eventVersion": "1.1",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "us-west-1",
+            "dynamodb": {
+                "ApproximateCreationDateTime": 1668204495,
+                "Keys": {
+                    "Id": {
+                        "S": "482544b8-e5c5-40f7-9754-431a07e1b6cb"
+                    }
+                },
+                "NewImage": {
+                    "Value": {
+                        "S": "Test2"
+                    },
+                    "Id": {
+                        "S": "482544b8-e5c5-40f7-9754-431a07e1b6cb"
+                    }
+                },
+                "OldImage": {
+                    "Value": {
+                        "S": "Test1"
+                    },
+                    "Id": {
+                        "S": "482544b8-e5c5-40f7-9754-431a07e1b6cb"
+                    }
+                },
+                "SequenceNumber": "300000000008225154154",
+                "SizeBytes": 134,
+                "StreamViewType": "NEW_AND_OLD_IMAGES"
+            },
+            "eventSourceARN": "arn:aws:dynamodb:us-west-1:648597819799:table/sync-stack-table/stream/2022-11-11T21:51:26.829"
+        }
+    ]
+}

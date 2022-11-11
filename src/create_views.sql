@@ -1,7 +1,7 @@
 
 -- Note that the default role has to be set in the console
 -- https://github.com/aws/aws-cdk/issues/22551 traking the cr for this
-
+-- Properties -> Associated IAM roles -> check role select set default
 
 -- Link Redshift to the kinesis stream
 CREATE EXTERNAL SCHEMA kinesis_schema

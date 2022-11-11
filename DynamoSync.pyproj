@@ -5,8 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{397136c1-4d81-408a-9e21-46a2a5ab031b}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>src\stream_lambda\submit_run.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -23,12 +22,16 @@
     <Content Include="requirements-dev.txt" />
     <Content Include="requirements.txt" />
     <Content Include="src\create_views.sql" />
+    <Content Include="src\stream_lambda\SampleDelete.json" />
+    <Content Include="src\stream_lambda\SampleUpdate.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="app.py" />
     <Compile Include="dynamo_sync\dynamo_sync_stack.py" />
     <Compile Include="dynamo_sync\__init__.py" />
     <Compile Include="src\stream_lambda\submit_firehose.py" />
+    <Compile Include="src\stream_lambda\submit_run.py" />
+    <Compile Include="src\stream_lambda\__init__.py" />
     <Compile Include="tests\unit\test_dyanmo_sink_stack.py" />
     <Compile Include="tests\unit\__init__.py" />
     <Compile Include="tests\__init__.py" />
